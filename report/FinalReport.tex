@@ -1,0 +1,100 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{datetime}
+\usepackage{numprint}
+\usepackage{palatino}
+\usepackage{authblk}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage[english]{babel}
+\usepackage[
+	backend=biber,
+	style=numeric,
+]{biblatex}
+\addbibresource{refs.bib}
+
+\hypersetup{%
+    pdfborder = {0 0 0}
+}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.0}
+
+\begin{document}
+
+\nplpadding{2}
+
+\title{Malware Analysis Report: ``FritzFrog''\\ \vspace{-8pt} {\large CAP6137 Malware Reverse Engineering: P0x04}}
+\author{{Naman Arora \\ \vspace{-10pt}\small \href{mailto:naman.arora@ufl.edu}{naman.arora@ufl.edu}}}
+\date{\today}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\section{Executive Summary}
+
+\newpage
+\section{Static Analysis}
+	\subsection{Basic Identification}
+	\begin{center}
+		\begin{tabular}{c | c}
+			Attribute & Value\\
+			\hline
+			\hline
+			Bits & 64\\
+			Endianess & Little\\
+			Operating System & \\
+			\hline
+			Class & \\
+			Subsystem & \\
+			\hline
+			Size &  Bytes\\
+			Compiler Timestamp & \\
+			Compiler & \\
+			SHA256 Hash & \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Malware Sample Family Identification}
+
+	\subsection{Binary Headers}
+
+	\subsection{A case against Packing}
+
+	\subsection{Interesting Imports}
+
+	\subsection{Interesting Code Constructs}
+
+\newpage
+\section{Dynamic Analysis}
+	\subsection{Interesting Features}
+
+	\subsection{File System Interaction}
+
+	\subsection{Network Interaction}
+
+\newpage
+
+\section{Indicators of Compromise}
+	\subsection{Host Based}
+	\subsection{\textit{YARA} Rule}
+
+\newpage
+\section{Appendix A: Screenshots}
+
+%\begin{figure}[!htbp]% [!hb] forces image to be placed at that position
+%	\centering
+%	\includegraphics[width=\columnwidth]{pics/importsShell32.png}
+%	\caption{Ghidra: \textit{Shell32.dll} Imports}
+%	\label{importsShell32}
+%\end{figure}
+
+\newpage
+%\printbibliography
+\end{document}
