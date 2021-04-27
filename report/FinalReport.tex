@@ -83,7 +83,13 @@ This lack of obfuscation might indicate an early attempt in writing malware in a
 	The malware executable can be identified by submitting to Virustotal \cite{vt} as belonging to \textit{FritzFrog} malware family.
 
 	\subsection{Section Headers}
-	The sections within the binary have expected entropy values and do not show any significant deviations from the norm of any regular go program.
+	\begin{figure}[!htbp]% [!hb] forces image to be placed at that position
+		\centering
+		\includegraphics[width=\columnwidth]{pics/sections.png}
+		\caption{Rizin: Binary Sections}
+		\label{sections}
+	\end{figure}
+	The sections within the binary have expected entropy values and do not show any significant deviations from the norm of any regular go program (Fig. \ref{sections}).
 	One interesting thing, though, is the \textit{.gopclntab} section \cite{pclntab}.
 	This section contains contains mapping of individual functions with their line information from the original source files.
 	This feature has been available since \textit{Go 1.2} and helps in getting author defined function names from the binary.
@@ -113,20 +119,39 @@ This lack of obfuscation might indicate an early attempt in writing malware in a
 \newpage
 \section{Dynamic Analysis}
 	\subsection{Interesting Features}
-
-	\subsection{File System Interaction}
-
-	\subsection{Network Interaction}
-
+	Following are some of the interesting features of the malware discovered on dynamic analysis,
+	\begin{itemize}
+		\vspace{-0.7em}
+		\item On execution, it renames itself to \textit{nc} possibly in order to mimic \textit{GNU netcat} binary name.
+		\item It opens up a \textit{TCP} port @1234 (Fig. \ref{ports}).
+		\item On connecting to the port from another machine using \textit{Netcat}, it sends a Base64 encoded string which is different at every instance. This is most likely beginning of the \textit{Diffie-Hellman} key exchange process (Fig. \ref{pubkey}).
+		\item On analyzing with \textit{strace} for system-calls, it exhibits multiple \textit{unlink} calls.
+	\end{itemize}
 \newpage
 
 \section{Indicators of Compromise}
 	\subsection{Host Based}
+	Open \textit{TCP} port @\textbf{1234}
+
 	\subsection{\textit{YARA} Rule}
+	In case of unsuccessful copy from text below, use \cite{yara}.
+		\lstinputlisting[language={},basicstyle=\tiny]{../rule.yar}
 
 \newpage
 \section{Appendix A: Screenshots}
+\begin{figure}[!htbp]% [!hb] forces image to be placed at that position
+	\centering
+	\includegraphics[width=\columnwidth]{pics/openPort.png}
+	\caption{NMap: Open Ports on Victim machine}
+	\label{ports}
+\end{figure}
 
-\newpage
-%\printbibliography
+\begin{figure}[!htbp]% [!hb] forces image to be placed at that position
+	\centering
+	\includegraphics[width=\columnwidth]{pics/dhbegin.png}
+	\caption{NCat: Base64 Encoded Key}
+	\label{pubkey}
+\end{figure}
+
+\printbibliography
 \end{document}
