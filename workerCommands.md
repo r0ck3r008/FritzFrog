@@ -1,3 +1,38 @@
+## type struct Database
+This type most likely is used to store peer information, data fetched, blacklisted peers as well as peers currently being deployed
+Following are notable methods:
+1. main.NewDatabase __0x007d4290__
+	- Creates a new instance of _Database_ type, idiomatic Go.
+2. main.*Database.AddBlEntry __0x007d5890__
+	- Inserts a new blacklist entry
+	- Internally uses _main.*Database.internalAddBlEntry_ @__0x007d5660__
+3. main.*Database.AddDeploying __0x007d500__
+	- Possibly inserts a new entry which is currently being deployed and compromised for insertion into the swarm
+	- Internally calls a _main.*Database.internalAddDeploying_ @__0x007d6620__
+4. main.*Database.AddOwned __0x007d8800__
+	- Possibly inerts the information about binary data/blobs into the database
+	- Internally uses _main.*Database.internalAddOwned_ @__0x007d7640__
+5. main.*Database.AddTarget __0x007d5970__
+	- Adds a new target that might possibly convert to a deployed peer (?)
+	- Internally uses _main.*Database.internalAddTarget_ @__0x007d4f80__
+6. main.*Database.AddTPEntry __0x007d7000__
+	- Adds a _target pool_ which most likely consists a swarm of targets
+	- Internally leverages _main.*Database.internalAddTPEntry_ @__0x007d7130__
+	- Interestingly, it does not leverage _main.*Database.internalAddTarget_ in a loop indicating a deviation of _Target Pool_ from a single target
+7. main.*Database.GetBlacklist __0x007d4ac0__
+8. main.*Database.GetDeploying __0x007d4850__
+9. main.*Database.GetOwned __0x007d45e0__
+10. main.*Database.GetTargetPool _0x007d4d10__
+11. main.*Database.GetTargets __0x007d4390__
+12. main.*Database.IncreaseDeployFailCount __0x007d6170__
+13. main.*Database.IncreaseFailCount __0x007d5f40__
+14. main.*Database.IncreaseTryCount __0x007d8940__
+15. main.*Database.RemoveDeploying __0x007d5e10__
+16. main.*Database.RemoveOwned __0x007d5cd0__
+17. main.*Database.RemoveTarget __0x007d5a60__
+18. main.*Database.ResetDeployFailCount __0x007d63c0__
+19. main.*Database.ResetSuccFails __0x007d90e0__
+
 ## main.Worker
 main.Worker is presumably a function that is run after key exchange is successful.
 If this is the case, then it is very likely it is run as a separate go routine.
