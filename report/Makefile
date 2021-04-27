@@ -4,6 +4,6 @@ OBJECT := FinalReport
 all: report
 
 report:
-	${TEX} ${OBJECT}.tex
+	${TEX} --shell-escape ${OBJECT}.tex
 	biber ${OBJECT}
-	${TEX} ${OBJECT}.tex
+	${TEX} --shell-escape ${OBJECT}.tex
