@@ -1,3 +1,12 @@
+## type struct DHGroup
+This is quite likely used to exchange keys within the peers
+Notable methods are:
+1. main.*DHKeyExchange __0x007ce0d0__
+1. main.*DHGroup.ComputeKey __0x007ee470__
+2. main.*DHGroup.G __0x007edcf0__
+3. main.*DHGroup.GeneratePrivateKey __0x007edea0__
+4. main.*DHGroup.P __0x007edb40__
+
 ## type struct Database
 This type most likely is used to store peer information, data fetched, blacklisted peers as well as peers currently being deployed
 Following are notable methods:
