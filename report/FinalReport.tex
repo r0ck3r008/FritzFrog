@@ -90,7 +90,7 @@ This lack of obfuscation might indicate an early attempt in writing malware in a
 		\label{sections}
 	\end{figure}
 	The sections within the binary have expected entropy values and do not show any significant deviations from the norm of any regular go program (Fig. \ref{sections}).
-	One interesting thing, though, is the \textit{.gopclntab} section \cite{pclntab}.
+	One interesting thing, though, is the \textit{.gopclntab} section \cite{pclntab} \cite{cujo}.
 	This section contains contains mapping of individual functions with their line information from the original source files.
 	This feature has been available since \textit{Go 1.2} and helps in getting author defined function names from the binary.
 	Tools like \textit{Redress} \cite{redress} help in gathering the metadata.
